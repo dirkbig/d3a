@@ -26,34 +26,33 @@ def get_setup(config):
     area = Area(
         'Grid',
         [
-            Area('Neighborhood 1', [
-                Area(
-                    'House 1',
-                    [
-                        Area('H1 General Load', strategy=LoadHoursStrategy(avg_power_W=200,
-                                                                           hrs_per_day=24,
-                                                                           hrs_of_day=list(
-                                                                               range(0, 24)),
-                                                                           initial_buying_rate=30,
-                                                                           final_buying_rate=30),
-                             appliance=SwitchableAppliance()),
-                    ],
-                    transfer_fee_pct=0)], transfer_fee_pct=5),
-            Area('Neighborhood 2', [
-                Area(
-                    'House 2',
-                    [
-                        Area('H2 PV', strategy=PVStrategy(panel_count=4, initial_selling_rate=10,
-                                                          final_selling_rate=10),
-                             appliance=PVAppliance()),
+            Area(
+                'N1',
+                [
+                    Area('H1 General Load', strategy=LoadHoursStrategy(avg_power_W=200,
+                                                                       hrs_per_day=6,
+                                                                       hrs_of_day=list(
+                                                                           range(12, 18)),
+                                                                       initial_buying_rate=12.1,
+                                                                       final_buying_rate=12.1),
+                         appliance=SwitchableAppliance()),
+                ],
+                transfer_fee_pct=5, transfer_fee_const=0,
+            ),
+            Area(
+                'N2',
+                [
+                    Area('H2 PV', strategy=PVStrategy(panel_count=4, initial_selling_rate=10,
+                                                      final_selling_rate=10),
+                         appliance=PVAppliance()),
 
-                    ],
-                    transfer_fee_pct=0
+                ],
+                transfer_fee_pct=5, transfer_fee_const=0,
 
-                ),
-            ], transfer_fee_pct=5)
+            ),
+
         ],
-        config=config,
-        transfer_fee_pct=10
+        transfer_fee_pct=10,
+        config=config
     )
     return area

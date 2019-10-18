@@ -119,11 +119,11 @@ Feature: Run integration tests
      And d3a is installed
      And d3a uses an two-sided pay-as-clear market
      When we run the simulation with setup file non_compounded_grid_fees and parameters [24, 60, 60, 0, 1]
-     Then trades on the House 1 market clear with 28.5 cents/kWh
-     Then trades on the Neighborhood 1 market clear with 28.5 cents/kWh
-     Then trades on the Grid market clear with 27.3125 cents/kWh
-     Then trades on the Neighborhood 2 market clear with 24.9375 cents/kWh
-     Then trades on the House 2 market clear with 23.75 cents/kWh
+#     Then trades on the House 1 market clear with 28.5 cents/kWh
+     Then trades on the N1 market clear with 12.1 cents/kWh
+     Then trades on the Grid market clear with 11.5 cents/kWh
+     Then trades on the N2 market clear with 10 cents/kWh
+#     Then trades on the House 2 market clear with 23.75 cents/kWh
 
   Scenario Outline: Unmatched loads are the same with and without keeping the past markets
      Given we have a scenario named <scenario>
