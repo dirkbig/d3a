@@ -20,9 +20,12 @@ from d3a.models.area import Area
 from d3a.models.strategy.load_hours import LoadHoursStrategy
 from d3a.models.appliance.pv import PVAppliance
 from d3a.models.strategy.pv import PVStrategy
+from d3a_interface.constants_limits import ConstSettings
 
 
 def get_setup(config):
+    ConstSettings.IAASettings.MARKET_TYPE = 3
+
     area = Area(
         'Grid',
         [
@@ -33,8 +36,8 @@ def get_setup(config):
                                                                        hrs_per_day=6,
                                                                        hrs_of_day=list(
                                                                            range(12, 18)),
-                                                                       initial_buying_rate=12.1,
-                                                                       final_buying_rate=12.1),
+                                                                       initial_buying_rate=12.05,
+                                                                       final_buying_rate=12.05),
                          appliance=SwitchableAppliance()),
                 ],
                 transfer_fee_pct=5,
