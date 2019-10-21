@@ -27,7 +27,7 @@ def get_setup(config):
         'Grid',
         [
             Area(
-                'N1',
+                'Neighborhood 1',
                 [
                     Area('H1 General Load', strategy=LoadHoursStrategy(avg_power_W=200,
                                                                        hrs_per_day=6,
@@ -37,18 +37,17 @@ def get_setup(config):
                                                                        final_buying_rate=12.1),
                          appliance=SwitchableAppliance()),
                 ],
-                transfer_fee_pct=5, transfer_fee_const=0,
+                transfer_fee_pct=5,
             ),
             Area(
-                'N2',
+                'Neighborhood 2',
                 [
                     Area('H2 PV', strategy=PVStrategy(panel_count=4, initial_selling_rate=10,
                                                       final_selling_rate=10),
                          appliance=PVAppliance()),
 
                 ],
-                transfer_fee_pct=5, transfer_fee_const=0,
-
+                transfer_fee_pct=5,
             ),
 
         ],
